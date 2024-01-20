@@ -2,13 +2,47 @@ export function createGames(container, games) {
 	container.innerHTML = "";
 
 	games.forEach(function (game) {
-		container.innerHTML += `<div class="gamecard">
-		  <img src="${game.image}" class="image-size" alt="${game.title}" />
-		  <h3>${game.title}</h3>
-			<p>$${game.price}</p>
-			<p>${game.genre}</p>
-		  <a href="gamedetail.html?id=${game.id}" class="button button-white">Read more</a>
-			<a href="cart.html" class="button button-turquoise">Add to cart</a>
-			</div>`;
+		// Create the game card div
+		var gameCard = document.createElement("div");
+		gameCard.className = "gamecard";
+
+		// create the image element
+		var img = document.createElement("img");
+		img.src = game.image;
+		img.className = "image-size";
+		img.alt = game.title;
+		gameCard.appendChild(img);
+
+		// Create the title element (h3)
+		var title = document.createElement("h3");
+		title.textContent = game.title;
+		gameCard.appendChild(title);
+
+		// Create the price paragraph
+		var price = document.createElement("p");
+		price.textContent = "$" + game.price;
+		gameCard.appendChild(price);
+
+		// Create the genre paragraph
+		var genre = document.createElement("p");
+		genre.textContent = game.genre;
+		gameCard.appendChild(genre);
+
+		// Create the 'Read more' link
+		var readMore = document.createElement("a");
+		readMore.href = "gamedetail.html?id=" + game.id;
+		readMore.className = "button button-white";
+		readMore.textContent = "Read more";
+		gameCard.appendChild(readMore);
+
+		// Create the 'Add to cart' link
+		var addToCart = document.createElement("a");
+		addToCart.href = "cart.html";
+		addToCart.className = "button button-turquoise";
+		addToCart.textContent = "Add to cart";
+		gameCard.appendChild(addToCart);
+
+		// Append the game card to the container
+		container.appendChild(gameCard);
 	});
 }
