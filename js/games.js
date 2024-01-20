@@ -25,19 +25,14 @@ async function getGames() {
 		const adventureContainer = document.querySelector("#adventure-games");
 		createGames(adventureContainer, groupedGames.Adventure);
 	} catch (error) {
+		console.error("Error fetching games:", error);
 		const resultsContainer = document.querySelector("#container");
-		resultsContainer.innerHTML = `<p class="error">Oh no! An error occurred when loading the games.It will be fixed.</p>`;
+		resultsContainer.innerHTML = "";
+		const errorParagraph = document.createElement("p");
+		errorParagraph.className = "error";
+		errorParagraph.textContent =
+			"Oh no! An error occurred when loading the games.";
+		resultsContainer.appendChild(errorParagraph);
 	}
 }
 getGames();
-
-// to enable the #id link from the index.html category buttons to work alongside the javascript.
-// window.onload = function () {
-// 	const hash = window.location.hash;
-// 	if (hash) {
-// 		const targetElement = document.querySelector(hash);
-// 		if (targetElement) {
-// 			targetElement.scrollIntoView();
-// 		}
-// 	}
-// };
