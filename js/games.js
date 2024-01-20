@@ -30,14 +30,3 @@ async function getGames() {
 	}
 }
 getGames();
-
-// to enable the #id link from the index.html category buttons to work alongside the javascript.
-// window.onload = function () {
-// 	const hash = window.location.hash;
-// 	if (hash) {
-// 		const targetElement = document.querySelector(hash);
-// 		if (targetElement) {
-// 			targetElement.scrollIntoView();
-// 		}
-// 	}
-// };
