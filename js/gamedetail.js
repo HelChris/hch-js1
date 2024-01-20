@@ -18,24 +18,52 @@ async function getGame() {
 		}
 
 		const game = await response.json();
-
 		const resultsContainer = document.querySelector("#game-detail-page");
+		resultsContainer.innerHTML = "";
 
-		resultsContainer.innerHTML = `<section class="game-detail-page">
-      <img src="${game.image}" class="image-size" alt="${game.title}" />
-      <div class="gamedetail">
-      <h1>${game.title}</h1>
-			<p>Price: $${game.price}</p>
-			<p>Genre: ${game.genre}</p>
-			<p>Released: ${game.released}</p>
-			<p>Age: ${game.ageRating}</p>
-			<p>${game.description}</p>
-      <a href="cart.html" class="button button-turquoise">Add to cart</a>
-      </div>
-    </section>`;
+		const section = document.createElement("section");
+		section.className = "game-detail-page";
+		resultsContainer.appendChild(section);
+
+		const img = document.createElement("img");
+		img.src = game.image;
+		img.className = "image-size";
+		img.alt = game.title;
+		section.appendChild(img);
+
+		const gameDetailDiv = document.createElement("div");
+		gameDetailDiv.className = "gamedetail";
+		section.appendChild(gameDetailDiv);
+
+		// append game details
+		const details = [
+			{ tag: "h1", text: `${game.title}` },
+			{ tag: "p", text: `Price: $${game.price}` },
+			{ tag: "p", text: `Genre: ${game.genre}` },
+			{ tag: "p", text: `Released: ${game.released}` },
+			{ tag: "p", text: `Age: ${game.ageRating}` },
+			{ tag: "p", text: game.description },
+		];
+
+		details.forEach((detail) => {
+			const element = document.createElement(detail.tag);
+			element.textContent = detail.text;
+			gameDetailDiv.appendChild(element);
+		});
+
+		const addToCart = document.createElement("a");
+		addToCart.href = "cart.html";
+		addToCart.className = "button button-turquoise";
+		addToCart.textContent = "Add to cart";
+		gameDetailDiv.appendChild(addToCart);
 	} catch (error) {
+		console.error(error);
 		const resultsContainer = document.querySelector("#game-detail-page");
-		resultsContainer.innerHTML = `<p class="error">${error}Oh no! An error occurred when retrieving the games details. It will be fixed asap.</p>`;
+		resultsContainer.innerHTML = "";
+		const errorParagraph = document.createElement("p");
+		errorParagraph.className = "error";
+		errorParagraph.textContent = `${error.message}`;
+		resultsContainer.appendChild(errorParagraph);
 	}
 }
 
