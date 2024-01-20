@@ -14,7 +14,7 @@ async function getGame() {
 		const response = await fetch(gameUrl);
 
 		if (response.ok === false) {
-			throw new Error("There was an error fetching the game with id: " + id);
+			throw new Error(`There was an error fetching the game with id: ${id}`);
 		}
 
 		const game = await response.json();
@@ -35,7 +35,7 @@ async function getGame() {
     </section>`;
 	} catch (error) {
 		const resultsContainer = document.querySelector("#game-detail-page");
-		resultsContainer.innerHTML = `<p class="error">${error}Oh no! An error occurred when retrieving the games details. It will be fixed asap.</p>`;
+		resultsContainer.innerHTML = `<p class="error">${error}</p>`;
 	}
 }
 

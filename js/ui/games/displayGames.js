@@ -11,7 +11,7 @@ export function displayGames(games, container) {
         <p>$${game.price}</p>
         <p>${game.genre}</p>
         <a href="gamedetail.html?id=${game.id}" class="button button-white">Read more</a>
-        <a href="cart.html> class="button button-turquoise">Add to cart</a>
+        <a href="cart.html" class="button button-turquoise">Add to cart</a>
       </div>
     </section>`;
 	});
