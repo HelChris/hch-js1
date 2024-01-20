@@ -62,7 +62,7 @@ async function getGame() {
 		resultsContainer.innerHTML = "";
 		const errorParagraph = document.createElement("p");
 		errorParagraph.className = "error";
-		errorParagraph.textContent = `${error.message}`;
+		errorParagraph.textContent = `Oh no! An error has occured: "${error.message}"`;
 		resultsContainer.appendChild(errorParagraph);
 	}
 }
