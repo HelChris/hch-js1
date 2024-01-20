@@ -30,8 +30,7 @@ async function getGames() {
 		resultsContainer.innerHTML = "";
 		const errorParagraph = document.createElement("p");
 		errorParagraph.className = "error";
-		errorParagraph.textContent =
-			"Oh no! An error occurred when loading the games.";
+		errorParagraph.textContent = `${error.message}`;
 		resultsContainer.appendChild(errorParagraph);
 	}
 }
