@@ -17,10 +17,7 @@ async function getGame() {
 			throw new Error("There was an error fetching the game with id: " + id);
 		}
 
-		console.log(response);
-
 		const game = await response.json();
-		console.log(game);
 
 		const resultsContainer = document.querySelector("#game-detail-page");
 
@@ -37,7 +34,6 @@ async function getGame() {
       </div>
     </section>`;
 	} catch (error) {
-		console.log(error);
 		const resultsContainer = document.querySelector("#game-detail-page");
 		resultsContainer.innerHTML = `<p class="error">${error}Oh no! An error occurred when retrieving the games details. It will be fixed asap.</p>`;
 	}

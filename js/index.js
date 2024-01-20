@@ -14,8 +14,6 @@ async function getGames() {
 		resultsContainer.innerHTML = "";
 
 		games.forEach(function (game) {
-			console.log(game);
-
 			resultsContainer.innerHTML += `<section class="product-list">
 			<div class="game-card">
 			<img src="${game.image}" class="image-size" alt="${game.title}" />
@@ -28,7 +26,6 @@ async function getGames() {
 			</section>`;
 		});
 	} catch (error) {
-		console.error(error);
 		const resultsContainer = document.querySelector("#container");
 		resultsContainer.innerHTML =
 			'<p class="error">Oh no! An error occurred when loading the games.It will be fixed.</p>';

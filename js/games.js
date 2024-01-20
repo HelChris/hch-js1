@@ -13,8 +13,6 @@ async function getGames() {
 
 		const groupedGames = Object.groupBy(games, (game) => game.genre);
 
-		console.log(groupedGames);
-
 		const actionContainer = document.querySelector("#action-games");
 		createGames(actionContainer, groupedGames.Action);
 
@@ -27,15 +25,13 @@ async function getGames() {
 		const adventureContainer = document.querySelector("#adventure-games");
 		createGames(adventureContainer, groupedGames.Adventure);
 	} catch (error) {
-		console.error("Error fetching games:", error);
-
 		const resultsContainer = document.querySelector("#container");
 		resultsContainer.innerHTML = `<p class="error">Oh no! An error occurred when loading the games.It will be fixed.</p>`;
 	}
 }
 getGames();
 
-// to enable the #id link from the index.html to work alongside the javascript.
+// to enable the #id link from the index.html category buttons to work alongside the javascript.
 // window.onload = function () {
 // 	const hash = window.location.hash;
 // 	if (hash) {
